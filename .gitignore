@@ -1,0 +1,53 @@
+# ==========================
+# Build directories
+# ==========================
+
+build/
+out/
+bin/
+
+# ==========================
+# CMake
+# ==========================
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+compile_commands.json
+
+# ==========================
+# GoogleTest FetchContent
+# ==========================
+
+_deps/
+
+# ==========================
+# Executables
+# ==========================
+
+*.exe
+*.out
+
+autonomous_demo
+collis*on_detector_test
+
+# ==============*===========
+# VS Code
+# ==========*===============
+
+.vscode/
+
+# =====*====================
+# Operating S*stem
+# ==========================
+*.DS_Store
+Thumbs.db
+
+# ===========*==============
+# Temporary files
+#*==========================
+
+*.tmp
+*.log

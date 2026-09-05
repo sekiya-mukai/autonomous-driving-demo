@@ -1,5 +1,0 @@
-if(EXISTS "/workspaces/autonomous-driving-demo/build/collision_detector_test[1]_tests.cmake")
-  include("/workspaces/autonomous-driving-demo/build/collision_detector_test[1]_tests.cmake")
-else()
-  add_test(collision_detector_test_NOT_BUILT collision_detector_test_NOT_BUILT)
-endif()
