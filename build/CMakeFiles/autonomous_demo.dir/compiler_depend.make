@@ -6,6 +6,11 @@ CMakeFiles/autonomous_demo.dir/src/AdaptiveCruiseControl.cpp.o: /workspaces/auto
   /workspaces/autonomous-driving-demo/include/AdaptiveCruiseControl.hpp \
   /workspaces/autonomous-driving-demo/include/SensorData.hpp
 
+CMakeFiles/autonomous_demo.dir/src/CollisionDetector.cpp.o: /workspaces/autonomous-driving-demo/src/CollisionDetector.cpp \
+  /usr/include/stdc-predef.h \
+  /workspaces/autonomous-driving-demo/include/CollisionDetector.hpp \
+  /workspaces/autonomous-driving-demo/include/SensorData.hpp
+
 CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-demo/src/main.cpp \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -269,6 +274,10 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/x86_64-linux-gnu/bits/setjmp.h:
 
+/usr/include/x86_64-linux-gnu/bits/select.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:
+
 /usr/include/c++/13/bits/stl_algobase.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
@@ -303,25 +312,9 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/c++/13/bits/ios_base.h:
 
-/usr/include/c++/13/bits/move.h:
+/usr/include/c++/13/bits/hash_bytes.h:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/13/type_traits:
-
-/usr/include/c++/13/bits/locale_facets.tcc:
-
-/usr/include/c++/13/bits/requires_hosted.h:
-
-/usr/include/c++/13/bits/string_view.tcc:
-
-/workspaces/autonomous-driving-demo/include/CollisionDetector.hpp:
-
-/usr/include/features.h:
-
-/usr/include/c++/13/backward/binders.h:
-
-/usr/include/c++/13/bits/stringfwd.h:
+/usr/include/asm-generic/errno-base.h:
 
 /usr/include/c++/13/cwctype:
 
@@ -343,15 +336,17 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/c++/13/bits/exception.h:
 
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/c++/13/bits/hash_bytes.h:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /workspaces/autonomous-driving-demo/src/main.cpp:
+
+/usr/include/c++/13/bits/move.h:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/13/type_traits:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
@@ -379,13 +374,13 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/c++/13/iostream:
 
+/usr/include/stdc-predef.h:
+
 /workspaces/autonomous-driving-demo/include/SensorData.hpp:
 
 /usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/c++/13/bits/exception_ptr.h:
-
-/usr/include/stdc-predef.h:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
@@ -395,6 +390,20 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/c++/13/ext/string_conversions.h:
 
+/usr/include/c++/13/bits/locale_facets.tcc:
+
+/usr/include/c++/13/bits/requires_hosted.h:
+
+/usr/include/c++/13/bits/string_view.tcc:
+
+/workspaces/autonomous-driving-demo/include/CollisionDetector.hpp:
+
+/usr/include/features.h:
+
+/usr/include/c++/13/backward/binders.h:
+
+/usr/include/c++/13/bits/stringfwd.h:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
@@ -402,8 +411,6 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 /usr/include/c++/13/bits/ptr_traits.h:
 
 /usr/include/c++/13/bits/stl_iterator_base_types.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/13/bits/localefwd.h:
 
@@ -453,6 +460,8 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
+/workspaces/autonomous-driving-demo/src/CollisionDetector.cpp:
+
 /usr/include/c++/13/cerrno:
 
 /usr/include/stdio.h:
@@ -465,9 +474,9 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
 
-/usr/include/c++/13/bits/charconv.h:
-
 /usr/include/c++/13/bits/stl_pair.h:
+
+/usr/include/c++/13/bits/charconv.h:
 
 /usr/include/c++/13/cstdio:
 
@@ -572,7 +581,5 @@ CMakeFiles/autonomous_demo.dir/src/main.cpp.o: /workspaces/autonomous-driving-de
 /usr/include/x86_64-linux-gnu/bits/floatn-common.h:
 
 /usr/include/x86_64-linux-gnu/bits/locale.h:
-
-/usr/include/x86_64-linux-gnu/bits/select.h:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
