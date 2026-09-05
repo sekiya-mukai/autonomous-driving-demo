@@ -18,4 +18,3 @@ double AdaptiveCruiseControl::calculateTargetSpeed(
 
     return targetSpeed_;
 }
-`

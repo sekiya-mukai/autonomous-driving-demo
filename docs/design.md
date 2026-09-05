@@ -1,0 +1,1 @@
+```markdown # Design ## Components ### SensorData Input data from sensors. - Ego vehicle speed - Front vehicle speed - Distance to front vehicle ### CollisionDetector Calculates collision risk using TTC. TTC = Distance / RelativeSpeed ### AdaptiveCruiseControl Determines target speed. When the front vehicle is too close, the system reduces speed.
