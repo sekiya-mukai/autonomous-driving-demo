@@ -1,40 +1,46 @@
 # Autonomous Driving Demo
 
-A lightweight autonomous driving simulation written in modern C++17.
+C++17で実装した、自動運転システム向けの簡易シミュレータです。
 
-This project demonstrates the implementation of core autonomous driving concepts, including:
+前走車との車間距離や速度差をもとに、
 
-- Adaptive Cruise Control (ACC)
-- Collision Risk Detection
-- Unit Testing with GoogleTest
-- Modular C++ Software Design
-- CMake-based Build System
+- Adaptive Cruise Control（ACC）
+- Collision Detection（衝突リスク判定）
 
----
+を行います。
 
-## Overview
-
-The application simulates a simplified vehicle control pipeline.
-
-Sensor information is provided to both the Adaptive Cruise Control module and the Collision Detection module to determine the vehicle's target behavior.
+また、GoogleTestによる単体テストを実装し、ロジックの動作確認を行っています。
 
 ---
 
-## Architecture
+## 概要
+
+本プロジェクトでは、自動運転システムにおける基本的な判断ロジックをシンプルに再現しています。
+
+センサ情報を入力とし、
+
+- 目標速度の計算
+- 衝突リスクの判定
+
+を行います。
+
+---
+
+## システム構成
 
 ```mermaid
 flowchart LR
 
-    SensorData["Sensor Data"]
+    Sensor["センサ情報"]
 
     ACC["Adaptive Cruise Control"]
 
     Collision["Collision Detector"]
 
-    Decision["Vehicle Decision"]
+    Decision["車両制御判断"]
 
-    SensorData --> ACC
-    SensorData --> Collision
+    Sensor --> ACC
+    Sensor --> Collision
 
     ACC --> Decision
     Collision --> Decision
@@ -42,26 +48,26 @@ flowchart LR
 
 ---
 
-## Component Diagram
+## クラス構成
 
 ```mermaid
 classDiagram
 
 class SensorData
 {
-    +currentSpeed
-    +frontVehicleSpeed
-    +distanceToObstacle
+    currentSpeed
+    frontVehicleSpeed
+    distanceToObstacle
 }
 
 class AdaptiveCruiseControl
 {
-    +calculateTargetSpeed()
+    calculateTargetSpeed()
 }
 
 class CollisionDetector
 {
-    +isCollisionRisk()
+    isCollisionRisk()
 }
 
 SensorData --> AdaptiveCruiseControl
@@ -70,18 +76,18 @@ SensorData --> CollisionDetector
 
 ---
 
-## Execution Flow
+## 処理フロー
 
 ```mermaid
 flowchart TD
 
-    A["Read Sensor Data"]
+    A["センサ情報取得"]
 
-    B["Collision Detection"]
+    B["衝突リスク判定"]
 
-    C["Adaptive Cruise Control"]
+    C["目標速度計算"]
 
-    D["Generate Vehicle Command"]
+    D["結果出力"]
 
     A --> B
     A --> C
@@ -92,37 +98,40 @@ flowchart TD
 
 ---
 
-## Features
+## 実装機能
 
 ### Adaptive Cruise Control
 
-Calculates a safe target speed based on:
+以下の情報をもとに目標速度を計算します。
 
-- Current vehicle speed
-- Front vehicle speed
-- Following distance
-
-### Collision Detection
-
-Evaluates collision risk using:
-
-- Relative speed
-- Distance to obstacle
-- Time-to-Collision (TTC) concept
-
-### Unit Testing
-
-The collision detection logic is validated using GoogleTest.
-
-Covered scenarios include:
-
-- Collision Risk
-- No Collision Risk
-- Front Vehicle Faster
+- 自車速度
+- 前方車両速度
+- 車間距離
 
 ---
 
-## Project Structure
+### Collision Detection
+
+以下の情報をもとに衝突リスクを判定します。
+
+- 障害物までの距離
+- 相対速度
+
+---
+
+### 単体テスト
+
+GoogleTestを利用して衝突判定ロジックを検証しています。
+
+実施しているテストケース
+
+- 衝突リスクあり
+- 衝突リスクなし
+- 前方車両の方が速い場合
+
+---
+
+## ディレクトリ構成
 
 ```text
 autonomous-driving-demo
@@ -148,7 +157,7 @@ autonomous-driving-demo
 
 ---
 
-## Build
+## ビルド方法
 
 ```bash
 mkdir build
@@ -162,7 +171,7 @@ make
 
 ---
 
-## Run
+## 実行方法
 
 ```bash
 ./autonomous_demo
@@ -170,7 +179,7 @@ make
 
 ---
 
-## Example Output
+## 実行例
 
 ```text
 Target Speed : 50 km/h
@@ -179,19 +188,19 @@ Collision Risk : true
 
 ---
 
-## Execute Tests
+## テスト実行
 
 ```bash
 ./collision_detector_test
 ```
 
-or
+または
 
 ```bash
 ctest --verbose
 ```
 
-Expected Output:
+実行結果
 
 ```text
 [==========] Running 3 tests
@@ -200,29 +209,36 @@ Expected Output:
 
 ---
 
-## Technologies
+## 使用技術
 
 - C++17
 - CMake
 - GoogleTest
-- Object-Oriented Design
-- Unit Testing
+- オブジェクト指向設計
+- 単体テスト
 
 ---
 
-## Future Enhancements
+## 今後の拡張案
 
-- Lane Keeping Assist (LKA)
-- Object Tracking
-- Path Planning
-- Sensor Fusion
-- Extended TTC-based Risk Assessment
-- Integration with AUTOSAR-style Interfaces
+- Lane Keeping Assist（LKA）
+- TTC（Time To Collision）によるリスク評価
+- 複数障害物対応
+- 経路計画（Path Planning）
+- センサフュージョン
+- AUTOSARを意識したインターフェース分離
 
 ---
 
-## Motivation
+## 作成目的
 
-This project was created to practice software design techniques commonly used in autonomous driving systems.
+自動運転ソフトウェア開発で用いられる考え方を学習するために作成しました。
 
-The goal is to build a clean and testable architecture while demonstrating the implementation of core driver assistance functions using modern C++.
+特に、
+
+- C++による設計
+- CMakeによるビルド環境構築
+- GoogleTestによる単体テスト
+- 自動運転アルゴリズムの基礎実装
+
+を経験することを目的としています。
