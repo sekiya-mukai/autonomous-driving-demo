@@ -1,0 +1,7 @@
+add_test([=[CollisionDetectorTest.DetectCollisionRisk]=]  /workspaces/autonomous-driving-demo/build/collision_detector_test [==[--gtest_filter=CollisionDetectorTest.DetectCollisionRisk]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CollisionDetectorTest.DetectCollisionRisk]=]  PROPERTIES WORKING_DIRECTORY /workspaces/autonomous-driving-demo/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[CollisionDetectorTest.NoCollisionRisk]=]  /workspaces/autonomous-driving-demo/build/collision_detector_test [==[--gtest_filter=CollisionDetectorTest.NoCollisionRisk]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CollisionDetectorTest.NoCollisionRisk]=]  PROPERTIES WORKING_DIRECTORY /workspaces/autonomous-driving-demo/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[CollisionDetectorTest.FrontVehicleFaster]=]  /workspaces/autonomous-driving-demo/build/collision_detector_test [==[--gtest_filter=CollisionDetectorTest.FrontVehicleFaster]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[CollisionDetectorTest.FrontVehicleFaster]=]  PROPERTIES WORKING_DIRECTORY /workspaces/autonomous-driving-demo/build SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  collision_detector_test_TESTS CollisionDetectorTest.DetectCollisionRisk CollisionDetectorTest.NoCollisionRisk CollisionDetectorTest.FrontVehicleFaster)

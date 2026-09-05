@@ -95,6 +95,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"gmock\" \"gtest\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/autonomous-driving-demo/build/CMakeFiles /workspaces/autonomous-driving-demo/build//CMakeFiles/progress.marks
@@ -139,6 +184,71 @@ autonomous_demo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_demo.dir/build.make CMakeFiles/autonomous_demo.dir/build
 .PHONY : autonomous_demo/fast
 
+#=============================================================================
+# Target rules for targets named collision_detector_test
+
+# Build rule for target.
+collision_detector_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 collision_detector_test
+.PHONY : collision_detector_test
+
+# fast build rule for target.
+collision_detector_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/build
+.PHONY : collision_detector_test/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 src/AdaptiveCruiseControl.o: src/AdaptiveCruiseControl.cpp.o
 .PHONY : src/AdaptiveCruiseControl.o
 
@@ -169,6 +279,7 @@ src/CollisionDetector.o: src/CollisionDetector.cpp.o
 # target to build an object file
 src/CollisionDetector.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_demo.dir/build.make CMakeFiles/autonomous_demo.dir/src/CollisionDetector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/src/CollisionDetector.cpp.o
 .PHONY : src/CollisionDetector.cpp.o
 
 src/CollisionDetector.i: src/CollisionDetector.cpp.i
@@ -177,6 +288,7 @@ src/CollisionDetector.i: src/CollisionDetector.cpp.i
 # target to preprocess a source file
 src/CollisionDetector.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_demo.dir/build.make CMakeFiles/autonomous_demo.dir/src/CollisionDetector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/src/CollisionDetector.cpp.i
 .PHONY : src/CollisionDetector.cpp.i
 
 src/CollisionDetector.s: src/CollisionDetector.cpp.s
@@ -185,6 +297,7 @@ src/CollisionDetector.s: src/CollisionDetector.cpp.s
 # target to generate assembly for a file
 src/CollisionDetector.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_demo.dir/build.make CMakeFiles/autonomous_demo.dir/src/CollisionDetector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/src/CollisionDetector.cpp.s
 .PHONY : src/CollisionDetector.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -211,6 +324,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/autonomous_demo.dir/build.make CMakeFiles/autonomous_demo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+tests/CollisionDetectorTest.o: tests/CollisionDetectorTest.cpp.o
+.PHONY : tests/CollisionDetectorTest.o
+
+# target to build an object file
+tests/CollisionDetectorTest.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/tests/CollisionDetectorTest.cpp.o
+.PHONY : tests/CollisionDetectorTest.cpp.o
+
+tests/CollisionDetectorTest.i: tests/CollisionDetectorTest.cpp.i
+.PHONY : tests/CollisionDetectorTest.i
+
+# target to preprocess a source file
+tests/CollisionDetectorTest.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/tests/CollisionDetectorTest.cpp.i
+.PHONY : tests/CollisionDetectorTest.cpp.i
+
+tests/CollisionDetectorTest.s: tests/CollisionDetectorTest.cpp.s
+.PHONY : tests/CollisionDetectorTest.s
+
+# target to generate assembly for a file
+tests/CollisionDetectorTest.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/collision_detector_test.dir/build.make CMakeFiles/collision_detector_test.dir/tests/CollisionDetectorTest.cpp.s
+.PHONY : tests/CollisionDetectorTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -218,9 +355,18 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... install"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... autonomous_demo"
+	@echo "... collision_detector_test"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... src/AdaptiveCruiseControl.o"
 	@echo "... src/AdaptiveCruiseControl.i"
 	@echo "... src/AdaptiveCruiseControl.s"
@@ -230,6 +376,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... tests/CollisionDetectorTest.o"
+	@echo "... tests/CollisionDetectorTest.i"
+	@echo "... tests/CollisionDetectorTest.s"
 .PHONY : help
 
 

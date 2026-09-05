@@ -3,16 +3,16 @@ cmake_minimum_required(VERSION 3.16)
 project(
     AutonomousDrivingDemo
     VERSION 1.0.0
-    DESCRIPTION "Simple Autonomous Driving Demo"
     LANGUAGES CXX
 )
 
-# C++17
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# ===== Main executable =====
+# =====================================================
+# Main Application
+# =====================================================
 
 add_executable(
     autonomous_demo
@@ -35,6 +35,41 @@ target_compile_options(
         -Wpedantic
 )
 
-# ===== Tests (optional) =====
+# =====================================================
+# GoogleTest
+# =====================================================
+
+include(FetchContent)
+
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+
+FetchContent_MakeAvailable(googletest)
 
 enable_testing()
+
+add_executable(
+    collision_detector_test
+    tests/CollisionDetectorTest.cpp
+    src/CollisionDetector.cpp
+)
+
+target_include_directories(
+    collision_detector_test
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries(
+    collision_detector_test
+    PRIVATE
+        GTest::gtest_main
+)
+
+include(GoogleTest)
+
+gtest_discover_tests(
+    collision_detector_test
+)

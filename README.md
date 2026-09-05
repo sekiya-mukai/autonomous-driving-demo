@@ -34,4 +34,5 @@ make
     Target Speed : 50 km/h
     Collision Risk : true
 
-
+## Test
+./collision_detector_test
