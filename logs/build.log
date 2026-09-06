@@ -1,0 +1,108 @@
+===== Build started: Sun Sep  6 08:10:27 UTC 2026 =====
+
+===== CMake =====
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /home/codespace/.python/current/bin/python3 (found version "3.12.1") found components: Interpreter 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (1.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /workspaces/autonomous-driving-demo/build
+
+===== Make =====
+[  3%] Building CXX object CMakeFiles/autonomous_demo.dir/src/main.cpp.o
+[  7%] Building CXX object CMakeFiles/autonomous_demo.dir/src/AdaptiveCruiseControl.cpp.o
+[ 11%] Building CXX object CMakeFiles/autonomous_demo.dir/src/CollisionDetector.cpp.o
+[ 14%] Building CXX object CMakeFiles/autonomous_demo.dir/src/SensorDataValidator.cpp.o
+[ 18%] Linking CXX executable autonomous_demo
+[ 18%] Built target autonomous_demo
+[ 22%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[ 25%] Linking CXX static library ../../../lib/libgtest.a
+[ 25%] Built target gtest
+[ 29%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 33%] Linking CXX static library ../../../lib/libgtest_main.a
+[ 33%] Built target gtest_main
+[ 37%] Building CXX object CMakeFiles/collision_detector_test.dir/tests/CollisionDetectorTest.cpp.o
+[ 40%] Building CXX object CMakeFiles/collision_detector_test.dir/src/CollisionDetector.cpp.o
+[ 44%] Linking CXX executable collision_detector_test
+[ 44%] Built target collision_detector_test
+[ 48%] Building CXX object CMakeFiles/adaptive_cruise_control_test.dir/tests/AdaptiveCruiseControlTest.cpp.o
+[ 51%] Building CXX object CMakeFiles/adaptive_cruise_control_test.dir/src/AdaptiveCruiseControl.cpp.o
+[ 55%] Linking CXX executable adaptive_cruise_control_test
+[ 55%] Built target adaptive_cruise_control_test
+[ 59%] Building CXX object CMakeFiles/sensor_data_validator_test.dir/tests/SensorDataValidatorTest.cpp.o
+[ 62%] Building CXX object CMakeFiles/sensor_data_validator_test.dir/src/SensorDataValidator.cpp.o
+[ 66%] Linking CXX executable sensor_data_validator_test
+[ 66%] Built target sensor_data_validator_test
+[ 70%] Building CXX object CMakeFiles/sensor_data_integration_test.dir/tests/DrivingSafetyCheckerTest.cpp.o
+[ 74%] Building CXX object CMakeFiles/sensor_data_integration_test.dir/src/DrivingSafetyChecker.cpp.o
+[ 77%] Building CXX object CMakeFiles/sensor_data_integration_test.dir/src/SensorDataValidator.cpp.o
+[ 81%] Building CXX object CMakeFiles/sensor_data_integration_test.dir/src/CollisionDetector.cpp.o
+[ 85%] Linking CXX executable sensor_data_integration_test
+[ 85%] Built target sensor_data_integration_test
+[ 88%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 92%] Linking CXX static library ../../../lib/libgmock.a
+[ 92%] Built target gmock
+[ 96%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[100%] Linking CXX static library ../../../lib/libgmock_main.a
+[100%] Built target gmock_main
+
+===== Tests =====
+Test project /workspaces/autonomous-driving-demo/build
+  Test  #1: CollisionDetectorFunctionalTest.CD_F_001_DetectCollisionRisk
+  Test  #2: CollisionDetectorFunctionalTest.CD_F_002_NoCollisionRisk
+  Test  #3: CollisionDetectorFunctionalTest.CD_F_003_FrontVehicleFaster
+  Test  #4: CollisionDetectorBoundaryTest.CD_BV_001_RelativeSpeedBelowZero
+  Test  #5: CollisionDetectorBoundaryTest.CD_BV_002_RelativeSpeedAtZero
+  Test  #6: CollisionDetectorBoundaryTest.CD_BV_003_RelativeSpeedAboveZero
+  Test  #7: CollisionDetectorBoundaryTest.CD_BV_004_TtcJustBelowThreshold
+  Test  #8: CollisionDetectorBoundaryTest.CD_BV_005_TtcAtThreshold
+  Test  #9: CollisionDetectorBoundaryTest.CD_BV_006_TtcJustAboveThreshold
+  Test #10: AdaptiveCruiseControlBoundaryTest.ACC_BV_001_TargetSpeedAtZero
+  Test #11: AdaptiveCruiseControlBoundaryTest.ACC_BV_002_TargetSpeedJustAboveZero
+  Test #12: AdaptiveCruiseControlBoundaryTest.ACC_BV_003_EgoSpeedAtZero
+  Test #13: AdaptiveCruiseControlBoundaryTest.ACC_BV_004_EgoSpeedJustAboveZero
+  Test #14: AdaptiveCruiseControlBoundaryTest.ACC_BV_005_FrontSpeedAtZero
+  Test #15: AdaptiveCruiseControlBoundaryTest.ACC_BV_006_FrontSpeedJustAboveZero
+  Test #16: AdaptiveCruiseControlBoundaryTest.ACC_BV_007_DistanceJustBelowSafeDistance
+  Test #17: AdaptiveCruiseControlBoundaryTest.ACC_BV_008_DistanceAtSafeDistance
+  Test #18: AdaptiveCruiseControlBoundaryTest.ACC_BV_009_DistanceJustAboveSafeDistance
+  Test #19: AdaptiveCruiseControlFunctionalTest.ACC_F_001_MaintainsTargetSpeed
+  Test #20: AdaptiveCruiseControlFunctionalTest.ACC_F_002_FollowsFrontVehicle
+  Test #21: AdaptiveCruiseControlFunctionalTest.ACC_F_003_MaintainsTargetSpeedWhenFrontVehicleIsFaster
+  Test #22: SensorDataValidatorInvalidValueTest.SDV_IV_001_NegativeEgoSpeed
+  Test #23: SensorDataValidatorInvalidValueTest.SDV_IV_002_NegativeFrontSpeed
+  Test #24: SensorDataValidatorInvalidValueTest.SDV_IV_003_NegativeDistance
+  Test #25: SensorDataValidatorInvalidValueTest.SDV_IV_004_NaNEgoSpeed
+  Test #26: SensorDataValidatorInvalidValueTest.SDV_IV_005_NaNFrontSpeed
+  Test #27: SensorDataValidatorInvalidValueTest.SDV_IV_006_NaNDistance
+  Test #28: SensorDataValidatorInvalidValueTest.SDV_IV_007_PositiveInfinityEgoSpeed
+  Test #29: SensorDataValidatorInvalidValueTest.SDV_IV_008_PositiveInfinityFrontSpeed
+  Test #30: SensorDataValidatorInvalidValueTest.SDV_IV_009_PositiveInfinityDistance
+  Test #31: SensorDataValidatorInvalidValueTest.SDV_IV_010_NegativeInfinityEgoSpeed
+  Test #32: SensorDataValidatorInvalidValueTest.SDV_IV_011_NegativeInfinityFrontSpeed
+  Test #33: SensorDataValidatorInvalidValueTest.SDV_IV_012_NegativeInfinityDistance
+  Test #34: SensorDataIntegrationTest.SDV_IT_001_NegativeEgoSpeedRejected
+  Test #35: SensorDataIntegrationTest.SDV_IT_002_NegativeFrontSpeedRejected
+  Test #36: SensorDataIntegrationTest.SDV_IT_003_NegativeDistanceRejected
+  Test #37: SensorDataIntegrationTest.SDV_IT_004_ValidSensorDataAccepted
+
+Total Tests: 37
+
+===== Application =====
+Target Speed : 50 km/h
+Collision Risk : true
+
+===== Build finished: Sun Sep  6 08:10:44 UTC 2026 =====
