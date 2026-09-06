@@ -220,3 +220,113 @@ TEST(
 
     EXPECT_DOUBLE_EQ(actual, 50.0);
 }
+
+// =====================================================
+// Functional Tests
+// =====================================================
+//
+// Test specification:
+//   ACC-F-001 ～ ACC-F-003
+//
+// Functional tests verify representative driving
+// scenarios rather than boundary conditions.
+//
+// Each GoogleTest case corresponds 1-to-1 with
+// a test case ID in the test specification.
+// =====================================================
+
+
+// =====================================================
+// ACC-F-001
+// =====================================================
+//
+// 十分な車間距離が確保されている場合、
+// ドライバー設定速度を維持する。
+//
+// Representative scenario:
+//   targetSpeed = 100 km/h
+//   egoSpeed    = 80 km/h
+//   frontSpeed  = 80 km/h
+//   distance    = 100 m
+//
+TEST(
+    AdaptiveCruiseControlFunctionalTest,
+    ACC_F_001_MaintainsTargetSpeed)
+{
+    AdaptiveCruiseControl acc(100.0);
+
+    SensorData sensorData{
+        80.0,   // egoSpeed [km/h]
+        80.0,   // frontSpeed [km/h]
+        100.0   // distance [m]
+    };
+
+    const double actual =
+        acc.calculateTargetSpeed(sensorData);
+
+    EXPECT_DOUBLE_EQ(actual, 100.0);
+}
+
+
+// =====================================================
+// ACC-F-002
+// =====================================================
+//
+// 車間距離が不足している場合、
+// 前方車両の速度に追従する。
+//
+// Representative scenario:
+//   targetSpeed = 100 km/h
+//   egoSpeed    = 80 km/h
+//   frontSpeed  = 60 km/h
+//   distance    = 20 m
+//
+TEST(
+    AdaptiveCruiseControlFunctionalTest,
+    ACC_F_002_FollowsFrontVehicle)
+{
+    AdaptiveCruiseControl acc(100.0);
+
+    SensorData sensorData{
+        80.0,   // egoSpeed [km/h]
+        60.0,   // frontSpeed [km/h]
+        20.0    // distance [m]
+    };
+
+    const double actual =
+        acc.calculateTargetSpeed(sensorData);
+
+    EXPECT_DOUBLE_EQ(actual, 60.0);
+}
+
+
+// =====================================================
+// ACC-F-003
+// =====================================================
+//
+// 前方車両が自車より速くても、
+// 車間距離が十分であれば設定速度を維持する。
+//
+// Representative scenario:
+//   targetSpeed = 100 km/h
+//   egoSpeed    = 80 km/h
+//   frontSpeed  = 120 km/h
+//   distance    = 50 m
+//
+TEST(
+    AdaptiveCruiseControlFunctionalTest,
+    ACC_F_003_MaintainsTargetSpeedWhenFrontVehicleIsFaster)
+{
+    AdaptiveCruiseControl acc(100.0);
+
+    SensorData sensorData{
+        80.0,   // egoSpeed [km/h]
+        120.0,  // frontSpeed [km/h]
+        50.0    // distance [m]
+    };
+
+    const double actual =
+        acc.calculateTargetSpeed(sensorData);
+
+    EXPECT_DOUBLE_EQ(actual, 100.0);
+}

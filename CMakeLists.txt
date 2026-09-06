@@ -29,6 +29,7 @@ add_executable(
     src/main.cpp
     src/AdaptiveCruiseControl.cpp
     src/CollisionDetector.cpp
+    src/SensorDataValidator.cpp
 )
 
 target_include_directories(
@@ -59,6 +60,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+include(GoogleTest)
+
 # =====================================================
 # Collision Detector Test
 # =====================================================
@@ -86,8 +89,6 @@ target_link_libraries(
     PRIVATE
         GTest::gtest_main
 )
-
-include(GoogleTest)
 
 gtest_discover_tests(
     collision_detector_test
@@ -123,4 +124,70 @@ target_link_libraries(
 
 gtest_discover_tests(
     adaptive_cruise_control_test
+)
+
+# =====================================================
+# Sensor Data Validator Test
+# =====================================================
+
+add_executable(
+    sensor_data_validator_test
+    tests/SensorDataValidatorTest.cpp
+    src/SensorDataValidator.cpp
+)
+
+target_include_directories(
+    sensor_data_validator_test
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+)
+
+target_compile_options(
+    sensor_data_validator_test
+    PRIVATE
+        ${COMMON_COMPILE_OPTIONS}
+)
+
+target_link_libraries(
+    sensor_data_validator_test
+    PRIVATE
+        GTest::gtest_main
+)
+
+gtest_discover_tests(
+    sensor_data_validator_test
+)
+
+# =====================================================
+# Sensor Data Integration Test
+# =====================================================
+
+add_executable(
+    sensor_data_integration_test
+    tests/DrivingSafetyCheckerTest.cpp
+    src/DrivingSafetyChecker.cpp
+    src/SensorDataValidator.cpp
+    src/CollisionDetector.cpp
+)
+
+target_include_directories(
+    sensor_data_integration_test
+    PRIVATE
+        ${PROJECT_SOURCE_DIR}/include
+)
+
+target_compile_options(
+    sensor_data_integration_test
+    PRIVATE
+        ${COMMON_COMPILE_OPTIONS}
+)
+
+target_link_libraries(
+    sensor_data_integration_test
+    PRIVATE
+        GTest::gtest_main
+)
+
+gtest_discover_tests(
+    sensor_data_integration_test
 )
