@@ -29,6 +29,7 @@ public:
      *
      * @param targetSpeed 巡航目標速度[km/h]
      */
+    //  explicit 意図しない暗黙変換を防ぐため
     explicit AdaptiveCruiseControl(double targetSpeed);
 
     /**

@@ -9,6 +9,8 @@ namespace
 // コンストラクタ
 AdaptiveCruiseControl::AdaptiveCruiseControl(
     double targetSpeed)
+    // targetSpeed_(メンバ変数) ← targetSpeed(コンストラクタの引数)へ代入
+    // メンバ初期化リストの開始. メンバ変数をコンストラクタの引数で初期化
     : targetSpeed_(targetSpeed)
 {
 }
