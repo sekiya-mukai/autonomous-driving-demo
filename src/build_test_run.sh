@@ -24,7 +24,8 @@ LOG_FILE="logs/build.log"
 
     echo ""
     echo "===== Tests ====="
-    ctest --test-dir build -N
+    ctest --test-dir . -N
+    # ctest --test-dir build -N
     # ctest --output-on-failure
 
     echo ""
