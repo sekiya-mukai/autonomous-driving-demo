@@ -53,25 +53,29 @@ flowchart LR
 ```mermaid
 classDiagram
 
-class SensorData
-{
-    currentSpeed
-    frontVehicleSpeed
-    distanceToObstacle
+class SensorData {
+    +double currentSpeed
+    +double frontVehicleSpeed
+    +double distanceToObstacle
 }
 
-class AdaptiveCruiseControl
-{
-    calculateTargetSpeed()
+class AdaptiveCruiseControl {
+    +double calculateTargetSpeed()
 }
 
-class CollisionDetector
-{
-    isCollisionRisk()
+class CollisionDetector {
+    +bool isCollisionRisk()
+}
+
+class VehicleController {
+    +void run()
 }
 
 SensorData --> AdaptiveCruiseControl
 SensorData --> CollisionDetector
+
+AdaptiveCruiseControl --> VehicleController
+CollisionDetector --> VehicleController
 ```
 
 ---
