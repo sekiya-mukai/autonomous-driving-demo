@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-
+#include <cmath>
+#include <limits>
 #include "DrivingSafetyChecker.hpp"
 
 // =====================================================
@@ -124,4 +125,82 @@ TEST(
         checker.isCollisionRisk(sensorData);
 
     EXPECT_TRUE(actual);
+}
+
+// =====================================================
+// SDV-IT-005
+// =====================================================
+//
+// egoSpeed が NaN の場合
+// ValidatorがNGと判定するため、
+// CollisionDetectorによる衝突判定を行わない。
+//
+TEST(
+    SensorDataIntegrationTest,
+    SDV_IT_005_NaNEgoSpeedRejected)
+{
+    DrivingSafetyChecker checker;
+
+    SensorData sensorData{
+        std::numeric_limits<double>::quiet_NaN(),
+        50.0,
+        20.0
+    };
+
+    const bool actual =
+        checker.isCollisionRisk(sensorData);
+
+    EXPECT_FALSE(actual);
+}
+
+// =====================================================
+// SDV-IT-006
+// =====================================================
+//
+// egoSpeed が +Infinity の場合
+// ValidatorがNGと判定するため、
+// CollisionDetectorによる衝突判定を行わない。
+//
+TEST(
+    SensorDataIntegrationTest,
+    SDV_IT_006_PositiveInfinityEgoSpeedRejected)
+{
+    DrivingSafetyChecker checker;
+
+    SensorData sensorData{
+        std::numeric_limits<double>::infinity(),
+        50.0,
+        20.0
+    };
+
+    const bool actual =
+        checker.isCollisionRisk(sensorData);
+
+    EXPECT_FALSE(actual);
+}
+
+// =====================================================
+// SDV-IT-007
+// =====================================================
+//
+// egoSpeed が -Infinity の場合
+// ValidatorがNGと判定するため、
+// CollisionDetectorによる衝突判定を行わない。
+//
+TEST(
+    SensorDataIntegrationTest,
+    SDV_IT_007_NegativeInfinityEgoSpeedRejected)
+{
+    DrivingSafetyChecker checker;
+
+    SensorData sensorData{
+        -std::numeric_limits<double>::infinity(),
+        50.0,
+        20.0
+    };
+
+    const bool actual =
+        checker.isCollisionRisk(sensorData);
+
+    EXPECT_FALSE(actual);
 }
