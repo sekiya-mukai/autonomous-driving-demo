@@ -1,4 +1,3 @@
-````
 # Autonomous Driving Demo
 
 C++17で実装した、自動運転システム向けの簡易シミュレータです。
