@@ -30,6 +30,8 @@ add_executable(
     src/AdaptiveCruiseControl.cpp
     src/CollisionDetector.cpp
     src/SensorDataValidator.cpp
+    src/TTCCalculator.cpp
+    src/EmergencyBrakeSystem.cpp
 )
 
 target_include_directories(
@@ -191,3 +193,19 @@ target_link_libraries(
 gtest_discover_tests(
     sensor_data_integration_test
 )
+
+
+# 追加 9/9
+add_executable(
+    ttc_calculator_test
+    tests/TTCCalculatorTest.cpp
+    src/TTCCalculator.cpp
+)
+
+add_executable(
+    emergency_brake_test
+    tests/EmergencyBrakeSystemTest.cpp
+    src/EmergencyBrakeSystem.cpp
+)
+
+

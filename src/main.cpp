@@ -23,6 +23,9 @@ int main()
     // 衝突リスク判定モジュール
     CollisionDetector detector;
 
+    
+    
+
     // センサ情報からACCの目標速度を計算
     //
     // 前方車両が近い場合は減速し、
@@ -42,11 +45,30 @@ int main()
               << targetSpeed
               << " km/h\n";
 
-    // 衝突リスクの判定結果を表示
-    std::cout << "Collision Risk : "
+              // 衝突リスクの判定結果を表示
+              std::cout << "Collision Risk : "
               << std::boolalpha
               << collisionRisk
               << '\n';
+
+    // 追加(9/9)
+    TTCCalculator ttcCalculator;
+
+    EmergencyBrakeSystem aeb;
+
+    double ttc =
+        ttcCalculator.calculate(
+            disntance,
+            relativeSpeed);
+    
+    BrakeLevel brakeLevel =
+        aeb.evaluate(ttc);
+    
+    std::cout
+    << "TTC: "
+    << ttc
+    << std::endl;
+              
 
     return 0;
 }

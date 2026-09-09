@@ -53,3 +53,4 @@ Thumbs.db
 *.tmp
 # 開発時はコメントアウトする
 # *.log
+/practice
